@@ -25,8 +25,8 @@ public void isHit(ArrayList<Integer> shot, HashMap<String, ArrayList<ArrayList<I
         ArrayList<ArrayList<Integer>> shipCoordinates = ship.getValue();
         for (ArrayList<Integer> pointOfShip : shipCoordinates){
             if (pointOfShip.equals(shot)){     
-                pointOfShip.set(0, 0);           
-                pointOfShip.set(1, 0);           
+                pointOfShip.set(0, -1);           
+                pointOfShip.set(1, -1);           
                 markAfterShot(shot, true);
             }else{
                 markAfterShot(shot, false);

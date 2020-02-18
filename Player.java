@@ -6,8 +6,10 @@ class Player {
     private HashMap <String, Integer> listOfShips;
     private HashMap <String, ArrayList<ArrayList<Integer>>> listOfUsersShips;
     private ArrayList<Integer> userShot;
-    private Integer sumOfCoordinates; 
+    private int isSunk = 0;
+    private String sunkShipName;
     Scanner scan = new Scanner(System.in);
+    private ArrayList<Integer> sunkPoint = new ArrayList<>();
 
 
     public Player(){
@@ -70,17 +72,35 @@ class Player {
         return listOfUsersShips;
     }
 
-    public void checkIfWin (HashMap<String, ArrayList<ArrayList<Integer>>> listOfUsersShips){
-        sumOfCoordinates = 0;
+    public boolean checkIfWin (HashMap<String, ArrayList<ArrayList<Integer>>> listOfUsersShips){
+        this.sunkPoint = new ArrayList<>();
+
+        sunkPoint.add(-1);
+        sunkPoint.add(-1);
         for (HashMap.Entry<String, ArrayList<ArrayList<Integer>>> ship : listOfUsersShips.entrySet()){
+            int sizeOfShip = listOfShips.get(ship.getKey());
             for(ArrayList<Integer> coordinates : ship.getValue()){   
-                sumOfCoordinates += coordinates.get(0);
-                sumOfCoordinates += coordinates.get(1);
-                if (sumOfCoordinates == 0){
-                    listOfUsersShips.remove(ship.getKey());
+                if(coordinates.equals(sunkPoint)){
+                    isSunk++;
+                    System.out.println(isSunk+"issunk");
+                    System.out.println(sizeOfShip+"size");
+                    if(isSunk == sizeOfShip){
+                        sunkShipName = ship.getKey();
+                        System.out.println(ship.getKey() + " has been destroyed");   
+                        removeSunkShip(ship.getKey());
+                        return true;
+                    }else{
+                        return false;
+                    }
+                }else{
+                    isSunk--;
                 }
             }
         }
+        return false;
+    }
+    public void removeSunkShip(String nameShip){
+        listOfUsersShips.remove(nameShip);
     }
 }
 

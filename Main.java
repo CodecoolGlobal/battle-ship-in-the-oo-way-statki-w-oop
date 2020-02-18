@@ -8,7 +8,7 @@ class Main{
             player1.shot();
             ocean.isHit(player1.getUserShot(), player1.getListOfUserShips());
             ocean.display();
-            // player1.checkIfWin(player1.getListOfUserShips());
+            player1.checkIfWin(player1.getListOfUserShips());
             player1.displayShips();
         }
     }
