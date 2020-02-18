@@ -17,11 +17,11 @@ class Player {
         this.listOfShips = new HashMap<>();
         
         
-        listOfShips.put("Carrier", 2);
+        listOfShips.put("Carrier", 5);
         // listOfShips.put("Battleship", 4);
         // listOfShips.put("Cruiser", 3);
         // listOfShips.put("Submarine", 3);
-        // listOfShips.put("Destroyer", 2);
+        listOfShips.put("Destroyer", 2);
     
     }
     public HashMap<String, ArrayList<ArrayList<Integer>>> addShipToUser(){
@@ -74,31 +74,28 @@ class Player {
 
     public boolean checkIfWin (HashMap<String, ArrayList<ArrayList<Integer>>> listOfUsersShips){
         this.sunkPoint = new ArrayList<>();
+        sunkPoint.add(-1);
+        sunkPoint.add(-1);
 
-        sunkPoint.add(-1);
-        sunkPoint.add(-1);
         for (HashMap.Entry<String, ArrayList<ArrayList<Integer>>> ship : listOfUsersShips.entrySet()){
+            isSunk = 0;
             int sizeOfShip = listOfShips.get(ship.getKey());
             for(ArrayList<Integer> coordinates : ship.getValue()){   
                 if(coordinates.equals(sunkPoint)){
                     isSunk++;
-                    System.out.println(isSunk+"issunk");
-                    System.out.println(sizeOfShip+"size");
                     if(isSunk == sizeOfShip){
+                        isSunk = 0;
                         sunkShipName = ship.getKey();
                         System.out.println(ship.getKey() + " has been destroyed");   
-                        removeSunkShip(ship.getKey());
+                        removeSunkShip(sunkShipName);
                         return true;
-                    }else{
-                        return false;
                     }
-                }else{
-                    isSunk--;
                 }
             }
         }
         return false;
     }
+ 
     public void removeSunkShip(String nameShip){
         listOfUsersShips.remove(nameShip);
     }
