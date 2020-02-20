@@ -38,7 +38,7 @@ public void isHit(ArrayList<Integer> shot, HashMap<String, ArrayList<ArrayList<I
 public void markAfterShot(ArrayList<Integer> shot, boolean isHit){
         int x = shot.get(0);
         int y = shot.get(1);
-        Square square = board.get(x).get(y);
+        Square square = board.get(y).get(x);
 
     if (isHit){
         square.isHit();
