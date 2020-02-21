@@ -40,7 +40,7 @@ public void isHit(ArrayList<Integer> shot, HashMap<String, ArrayList<ArrayList<I
 public void markAfterShot(ArrayList<Integer> shot, boolean isHit){
         int x = shot.get(0);
         int y = shot.get(1);
-        // tu było odwrotnie w odsłaniu 
+        // tu było odwrotnie w odsłanianiu 
         Square square = board.get(y).get(x);
 
     if (isHit){
@@ -52,8 +52,7 @@ public void markAfterShot(ArrayList<Integer> shot, boolean isHit){
 }
 
 public void putTakenCoordinates(ArrayList<ArrayList<Integer>> ship){
-    System.out.println(takenCoordinates + "taken kooord");
-    System.out.println(ship + "lokacja shipa");
+  
     for (ArrayList<Integer> coordinates : ship){
         takenCoordinates.add(coordinates);
     }
@@ -63,25 +62,9 @@ public ArrayList<ArrayList<Integer>> getTakenCoordinates(){
     return takenCoordinates;
 }
 
-public void display(){
-    
-    int indexOfRow = 1;
-    String topLetters ="    A  B  C  D  E  F  G  H  I  J ";
-    System.out.println(topLetters);
-    System.out.println();
-
-    for(ArrayList<Square> row : this.board){
-        if(indexOfRow <10){
-            System.out.print(indexOfRow + "  ");
-        }else{
-            System.out.print(indexOfRow + " ");
-        }
-        for(Square square : row){
-            System.out.print(square.toString());
-        }
-        indexOfRow++;
-        System.out.println();
-
-    }
+public ArrayList <ArrayList<Square>> getBoard(){
+    return board;
 }
+
+
 }

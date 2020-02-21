@@ -19,7 +19,6 @@ class Player {
         this.ocean = ocean;
         this.listOfUsersShips = new HashMap<>();
         this.listOfShips = new HashMap<>();
-        this.userShot = new ArrayList<>();
         // listOfShips.put("Carrier", 5);
         // listOfShips.put("Battleship", 4);
         // listOfShips.put("Cruiser", 3);
@@ -55,7 +54,6 @@ class Player {
                     horizontal = false;
                 }
                 Ship ship = new Ship(shipTemplate.getValue(), horizontal, x, y, ocean);
-                System.out.println(ship.getShipLocation() + "lokalizacja w playerze przed dodaniem");
                 listOfUsersShips.put(shipTemplate.getKey(), ship.getShipLocation());
             }
 
@@ -70,11 +68,12 @@ class Player {
     }
 
     public ArrayList<Integer> userShot(){
+        this.userShot = new ArrayList<>();
         System.out.println("Type coordinates to shot.");
         String userInput = scan.next();
         int x = 0;
         int y;
-        char firstCharOfInput = userInput.charAt(0);
+        char firstCharOfInput = Character.toUpperCase(userInput.charAt(0));
         for(HashMap.Entry<String, Integer> row : upperRowofX.entrySet()){
             if(firstCharOfInput == row.getKey().charAt(0)){
                x = row.getValue();

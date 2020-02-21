@@ -52,7 +52,6 @@ public class Ship{
             for (ArrayList<Integer> tempCoordinates : tempLocation){
                 shipLocation.add(tempCoordinates);
             }
-        System.out.println(shipLocation + "lokacja po sprawdzeniu");
 
         }else{
             System.out.println("nie jest pusta");
