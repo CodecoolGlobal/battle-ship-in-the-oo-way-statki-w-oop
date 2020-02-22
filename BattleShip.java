@@ -36,16 +36,21 @@ class BattleShip {
     } 
 
     public void game(){
+        System.out.println("Creator of ships for player 1.");
         player1.addShipToUser(ocean1);
+        System.out.println("Creator of ships for player 2.");
         player2.addShipToUser(ocean2);
         while(true){
-            System.out.println("player 1 shot");
+            System.out.println("Player 1 shot: ");
             player1.userShot();
-            System.out.println(player1.getUserShot());
             ocean2.isHit(player1.getUserShot(), player2.getListOfUserShips());
-            player1.checkIfWin(player2.getListOfUserShips());
             display(ocean2.getBoard());
-            player2.displayShips();
+            player1.checkIfWin(player2.getListOfUserShips());
+            System.out.println("Player 2 shot: ");
+            player2.userShot();
+            ocean1.isHit(player2.getUserShot(), player1.getListOfUserShips());
+            display(ocean1.getBoard());
+            player2.checkIfWin(player1.getListOfUserShips());
         }
     }
 

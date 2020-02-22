@@ -47,7 +47,7 @@ public class Ship{
 
     public void checkIfPositionTaken(ArrayList<ArrayList<Integer>> board, Ocean ocean){
         if(board.isEmpty()){
-            System.out.println("pusta");
+            // System.out.println("pusta");
             ocean.putTakenCoordinates(tempLocation);
             for (ArrayList<Integer> tempCoordinates : tempLocation){
                 shipLocation.add(tempCoordinates);

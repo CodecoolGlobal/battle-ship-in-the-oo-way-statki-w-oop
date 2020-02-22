@@ -6,7 +6,7 @@ class Ocean{
 
 private ArrayList<ArrayList<Integer>> takenCoordinates = new ArrayList<>();
 
-ArrayList <ArrayList<Square>> board;
+private ArrayList <ArrayList<Square>> board;
 int width = 10;
 int height = 10;
 

@@ -10,19 +10,17 @@ class Player {
     private String sunkShipName;
     Scanner scan = new Scanner(System.in);
     private ArrayList<Integer> sunkPoint = new ArrayList<>();
-    private Ocean ocean;
     HashMap<String, Integer> upperRowofX;
 
 
 
     public Player(Ocean ocean){
-        this.ocean = ocean;
         this.listOfUsersShips = new HashMap<>();
         this.listOfShips = new HashMap<>();
         // listOfShips.put("Carrier", 5);
         // listOfShips.put("Battleship", 4);
         // listOfShips.put("Cruiser", 3);
-        // listOfShips.put("Submarine", 3);
+        listOfShips.put("Submarine", 3);
         listOfShips.put("Destroyer", 2);
         this.upperRowofX = new HashMap<>();
         upperRowofX.put("A",0);
@@ -38,6 +36,7 @@ class Player {
         upperRowofX.put("K",10);
     
     }
+
     public HashMap<String, ArrayList<ArrayList<Integer>>> addShipToUser(Ocean ocean){
             for (HashMap.Entry<String, Integer> shipTemplate : listOfShips.entrySet()){
                 System.out.println("Create " + shipTemplate.getKey() + "- it has lenght of " + shipTemplate.getValue() + " fields.");
@@ -85,14 +84,6 @@ class Player {
         return userShot;
     }
 
-    public ArrayList<Integer> getUserShot(){
-        return userShot;
-    } 
-
-    public HashMap<String, ArrayList<ArrayList<Integer>>> getListOfUserShips(){
-        return listOfUsersShips;
-    }
-
     public boolean checkIfWin (HashMap<String, ArrayList<ArrayList<Integer>>> listOfUsersShips){
         this.sunkPoint = new ArrayList<>();
         sunkPoint.add(-1);
@@ -119,5 +110,14 @@ class Player {
     public void removeSunkShip(String nameShip){
         listOfUsersShips.remove(nameShip);
     }
+
+    public ArrayList<Integer> getUserShot(){
+        return userShot;
+    } 
+
+    public HashMap<String, ArrayList<ArrayList<Integer>>> getListOfUserShips(){
+        return listOfUsersShips;
+    }
+
 }
 
